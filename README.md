@@ -24,18 +24,97 @@ Another aspect is that the data set should be formatted in such a way that more 
 
 
 ## ALGORITHM:
-Importing the libraries
-Importing the dataset
-Taking care of missing data
-Encoding categorical data
-Normalizing the data
-Splitting the data into test and train
+1.Importing the libraries
+
+2.Importing the dataset
+
+3.Taking care of missing data
+
+4.Encoding categorical data
+
+5.Normalizing the data
+
+6.Splitting the data into test and train
 
 ## PROGRAM:
-/Write your code here/
+```
+Developed by:Vishnupathi A
+Register no:212221223004
+```
+```
+import pandas as pd
 
+df=pd.read_csv("/content/Churn_Modelling.csv")
+
+df.head()
+
+df.isnull().sum()
+
+df.drop(["RowNumber","Age","Gender","Geography","Surname"],inplace=True,axis=1)
+
+print(df)
+
+x=df.iloc[:,:-1].values
+
+y=df.iloc[:,-1].values
+
+print(x)
+
+print(y)
+
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+
+df1 = pd.DataFrame(scaler.fit_transform(df))
+
+print(df1)
+
+from sklearn.model_selection import train_test_split
+
+xtrain,ytrain,xtest,ytest=train_test_split(x,y,test_size=0.2,random_state=2)
+
+print(xtrain)
+
+print(len(xtrain))
+
+print(xtest)
+
+print(len(xtest))
+
+from sklearn.preprocessing import StandardScaler
+
+sc = StandardScaler()
+
+df1 = sc.fit_transform(df)
+
+print(df1)
+```
 ## OUTPUT:
-/ Show the result/
+# df.head():
+![1](https://github.com/Vishnupathi2/Ex.No.1---Data-Preprocessing/assets/145830753/e872f897-7999-41a9-9a9e-f43c2e9423dd)
 
-## RESULT
-/Type your result here/
+# df.isnull().sum():
+![2](https://github.com/Vishnupathi2/Ex.No.1---Data-Preprocessing/assets/145830753/8f5a4748-6c6e-4d45-ba73-9ab03a157e00)
+
+# df value:
+![3](https://github.com/Vishnupathi2/Ex.No.1---Data-Preprocessing/assets/145830753/5f76c64c-3665-48d2-bccf-4af9d51b5871)
+
+# VALUES OF INPUT AND OUTPUT DATA ON VAR X AND Y:
+![4](https://github.com/Vishnupathi2/Ex.No.1---Data-Preprocessing/assets/145830753/6b1e12f5-9d06-4fb3-94d3-9c53955e11bb)
+![5](https://github.com/Vishnupathi2/Ex.No.1---Data-Preprocessing/assets/145830753/5fc3fde4-3d8b-4f31-8ce4-e766899a477f)
+
+# NORMALIZING DATA:
+![6](https://github.com/Vishnupathi2/Ex.No.1---Data-Preprocessing/assets/145830753/764bc78b-1438-445b-8da7-13e8fbddb27b)
+
+# X_TRAIN AND Y_TRAIN VALUES:
+![7](https://github.com/Vishnupathi2/Ex.No.1---Data-Preprocessing/assets/145830753/8d6d64e7-bafc-419d-8658-2b297f3df1e2)
+
+# X AND Y VALUES:
+![8](https://github.com/Vishnupathi2/Ex.No.1---Data-Preprocessing/assets/145830753/bbc76739-b36d-48e6-8c46-6cd7be9b7ee8)
+
+# X_TEST AND Y_TEST VALUES:
+![9](https://github.com/Vishnupathi2/Ex.No.1---Data-Preprocessing/assets/145830753/5b7a23ea-6487-4b09-9b67-ce475167c34a)
+
+## RESULT:
+Thus,the program to perform Data preprocessing in a data set downloaded from Kaggle is implemented successfully .
